@@ -46,8 +46,8 @@ def api_todo():
             number_of_task += 1
 
     print("Employee {} is done with tasks({}/{}):".format(employee_name,
-                                                            number_of_done_task,
-                                                            number_of_task))
+                                                          number_of_done_task,
+                                                          number_of_task))
     
     for title in titles_of_task:
         print(title)
