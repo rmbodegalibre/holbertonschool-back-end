@@ -50,7 +50,7 @@ def api_todo():
                                                           number_of_task))
 
     for title in titles_of_task:
-        print(title)
+        print("\t " + title)
 
 if __name__ == "__main__":
     api_todo()
