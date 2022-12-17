@@ -4,19 +4,19 @@
 
 import json
 import requests
-import sys
+from sys import argv
 
 
 def api_todo():
-    us_id = int(sys.argv[1])
+    # us_id = int(sys.argv[1])
     data_user = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'.format(us_id)).json()
+        'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])).json()
     todos_user = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-            us_id
+            argv[1]
         )).json()
 
-    with open('{}.json'.format(us_id), 'w') as f:
+    with open('{}.json'.format(argv[1]), 'w') as f:
         list_task = []
         for todo in todos_user:
             data_local = {}
@@ -25,7 +25,7 @@ def api_todo():
             data_local['username'] = data_user['username']
 
             list_task.append(data_local)
-        json_data = json.dumps({'{}'.format(us_id): list_task})
+        json_data = json.dumps({'{}'.format(argv[1]): list_task})
         f.write(json_data)
 
 if __name__ == "__main__":
