@@ -18,7 +18,7 @@ def api_todo():
     user_name = json_users.get("username")
 
     url_todos = "{}/todos?userId={}".format(url_base, argv[1])
-    # url_todos = "https://jsonplaceholder.typicode.com/todos?userId=" + argv[1]
+    # url_todos = "https://jsonplaceholder.typicode.com/todos?userId="+argv[1]
     data_users = get(url_todos)
     json_todos = data_users.json()
     done_tasks = []
