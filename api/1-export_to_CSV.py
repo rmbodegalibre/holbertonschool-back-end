@@ -30,24 +30,25 @@ def api_todo():
     """
     url_base = "https://jsonplaceholder.typicode.com"
     url_users = "{}/users/{}".format(url_base, argv[1])
-    data_users = get(url_users)
-    json_users = data_users.json()
-    user_name = json_users.get('username')
+    #url_users = "https://jsonplaceholder.typicode.com/users?id="
+    res = get(url_users)
+    json_users = res.json()
+    user_name = json_users.get("username")
 
     url_todos = "{}/todos?userId={}".format(url_base, argv[1])
-    data_todos = get(url_todos)
-    json_todos = data_todos.json()
+    #url_todos = "https://jsonplaceholder.typicode.com/todos"
+    res = get(url_todos)
+    json_todos = res.json()
     done_tasks = []
 
     for tasks in json_todos:
-        done_tasks.append([argv[1], user_name, tasks.get("completed"),
-                           tasks.get("title")])
+        done_tasks.append(
+            [argv[1], user_name, tasks.get("completed"), tasks.get("title")])
 
     csv_file = argv[1] + ".csv"
     with open(csv_file, mode="w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=',', quotechar='"',
                             quoting=csv.QUOTE_ALL)
-
         for task in done_tasks:
             writer.writerow(task)
 
