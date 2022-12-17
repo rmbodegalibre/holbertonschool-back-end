@@ -44,6 +44,12 @@ def api_todo():
                            tasks.get("title")])
 
     csv_file = argv[1] + ".csv"
+    with open(csv_file, mode="w", encoding="utf-8") as f:
+        writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+
+        for task in done_tasks:
+            writer.writerow(task)
+
 
 if __name__ == "__main__":
     api_todo()
