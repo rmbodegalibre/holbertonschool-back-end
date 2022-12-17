@@ -15,7 +15,6 @@ def api_todo():
             us_id
         )).json()
 
-
     with open('{}.csv'.format(us_id), 'w') as f:
         for todo in user_todos:
             f.write('"{}","{}","{}","{}"\n'.format(
