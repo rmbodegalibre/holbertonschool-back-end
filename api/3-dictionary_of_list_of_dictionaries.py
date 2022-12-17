@@ -6,7 +6,7 @@ import json
 import requests
 
 
-if __name__ == '__main__':
+def api_todo():
     data_users = requests.get(
         'https://jsonplaceholder.typicode.com/users').json()
 
@@ -31,3 +31,6 @@ if __name__ == '__main__':
     with open('todo_all_employees.json', 'w') as f:
         json_data = json.dumps(data_employees)
         f.write(json_data)
+
+if __name__ == '__main__':
+    api_todo()
